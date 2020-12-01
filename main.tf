@@ -2,6 +2,15 @@ provider "azurerm" {
     features {}
 }
 
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "Tfstate-rg"
+    storage_account_name = "terraformricstate"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
+  }
+}
+
 resource "azurerm_resource_group" "containerRG" {
     name = "ContainerRG"
     location = "West Europe"
@@ -18,7 +27,7 @@ resource "azurerm_container_group" "hello-world" {
 
   container {
     name   = "hello-world"
-    image  = "richikm/node-test-app:1.0"
+    image  = "richikm/node-test-app:${var.imagebuild}"
     cpu    = "0.5"
     memory = "1.5"
 
