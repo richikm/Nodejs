@@ -13,12 +13,12 @@ terraform {
 
 resource "azurerm_resource_group" "containerRG" {
     name = "ContainerRG"
-    location = "West Europe"
+    location = var.location
   
 }
 
 resource "azurerm_container_group" "hello-world" {
-    name                = "example-continst"
+    name                = "testComtInst"
     location            = azurerm_resource_group.containerRG.location
     resource_group_name = azurerm_resource_group.containerRG.name
     ip_address_type     = "public"
