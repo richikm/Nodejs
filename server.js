@@ -9,7 +9,7 @@ const HOST = '0.0.0.0';
 // App
 const app = express();
 app.get('/', (req, res) => {
-  res.send('Hello there !Version is Prod\n');
+  res.send('Hello world !Version is test\n');
 });
 
 var port = process.env.PORT||PORT;
